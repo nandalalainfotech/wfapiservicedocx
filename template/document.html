@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        table {
+            /* border: none; */
+            border-collapse: collapse;
+            /* text-align: center; */
+        }
+        
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: Verdana;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: Calibri;
+            font-size: 12px;
+        }
+        
+        .rotate {
+            /* -webkit-transform: rotate(-90deg); */
+            background-color: #D9D9D9;
+            border: none;
+            width: 100px;
+            font-size: 14px;
+            /* margin-right: 30px; */
+            /* padding-left: 30px; */
+        }
+        
+        .wells {
+            font-size: 28px;
+            font-weight: lighter;
+            border: none !important;
+        }
+        
+        .xx {
+            background-color: #F2F2F2;
+            border: 1px solid black !important;
+        }
+        
+        .project {
+            background-color: #808080;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .work {
+            text-align: right;
+        }
+        
+        .lynx {
+            background-color: #F2F2F2;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .scope {
+            text-align: left;
+            height: 30px;
+            background-color: #808080;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .provide {
+            background-color: #C5D9F1;
+            text-align: left;
+            font-size: 14px;
+            padding-bottom: 50px;
+        }
+        
+        .install {
+            text-align: center;
+            background-color: #808080;
+            color: white;
+            height: 20px;
+            font-size: 16px;
+        }
+        
+        .demo {
+            background-color: #808080;
+            height: 20px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .assume {
+            text-align: left;
+            font-size: 16px;
+            padding-bottom: 60px;
+        }
+        
+        .dollar {
+            background-color: #F2DCDB;
+        }
+        
+        .total {
+            text-align: right;
+        }
+        
+        .even {
+            background-color: #F2F2F2;
+        }
+        
+        .text {
+            color: #FF0000;
+        }
+        
+        .bord {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <table style="width: 100%;">
+
+        <tr>
+            <!-- <div id="content"> -->
+            <th id="content" colspan="21" class="wells">
+                <!-- <img width="50" height="50" src="../images/wellsfargo.jpg"> -->
+                <!-- <img src="data&colon;image/png;base64,..."> -->
+                <img width="50" height="50" src="data:image/png;base64,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">                Wells Fargo Quote Form for HVAC Projects
+            </th>
+            <!-- </div> -->
+        </tr>
+        <tr>
+            <th colspan="17" style="border: none;"></th>
+            <th colspan="2" style="border: none;"></th>
+        </tr>
+        <tr style="height: 35px;">
+            <th colspan="17" style="border: none;"></th>
+            <th colspan="2">Date Submitted:</th>
+            <th colspan="2" class="xx">xx-xx-xxxx</th>
+        </tr>
+
+
+
+        <tr>
+            <th colspan="10" class="project">PROJECT/ WO INFORMATION (Information provided by Wells Fargo)
+            </th>
+            <th colspan="1" rowspan="8" colspan="1" style="width: 40px;border: none !important;"></th>
+            <th colspan="10" class="project">VENDOR'S AUTHORIZED REPRESENTATIVE
+            </th>
+        </tr>
+
+        <tr>
+            <th colspan="4" class="work">Project # or Work Order #</th>
+            <th colspan="6" class="lynx"></th>
+            <th colspan="2" class="work">Company Name:</th>
+            <td colspan="4" class="lynx">Lynxspring Inc</td>
+            <th colspan="2" class="work">WF Vendor Number:</th>
+            <th colspan="2" class="lynx"></th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">WF Project/ Property Manager</th>
+            <th colspan="6" class="lynx"></th>
+            <th colspan="2" class="work">Remit To Address:</th>
+            <td colspan="4" class="lynx">Lee's Summit, MO 64086</td>
+            <th colspan="2" class="work">Proposal Number:</th>
+            <td colspan="2" class="lynx" style="text-align: center;"></td>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">BE Number:</th>
+            <th colspan="6" class="lynx"></th>
+            <th colspan="2" class="work">City, State, Zip :</th>
+            <td colspan="4" class="lynx">2900 NE Independence Ave</td>
+            <th colspan="2" class="work">WF Contract Number:</th>
+            <th colspan="2" class="lynx"></th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">Building / Project Name:</th>
+            <th colspan="6" class="lynx"></th>
+            <th colspan="2" class="work">Contact Name:</th>
+            <th colspan="4" class="lynx"></th>
+            <th colspan="2" class="work">Change Order #:</th>
+            <th colspan="2" class="lynx"></th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">BE Service or Delivery Address</th>
+            <th colspan="6" class="lynx"></th>
+            <th colspan="2" class="work">Phone:</th>
+            <td colspan="4" class="lynx">816 347 3500</td>
+            <th colspan="2" class="work">Change Order Previous PO#:</th>
+            <th colspan="2" class="lynx"></th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">Project Area (sq.ft.):</th>
+            <th colspan="6" class="lynx"></th>
+            <th colspan="2" class="work">Cell:</th>
+            <td colspan="4" class="lynx">913 219 5513</td>
+            <th colspan="4" class="lynx"></th>
+        </tr>
+        <tr style="height: 40px;">
+            <th colspan="3">Estimated Start Date:</th>
+            <td colspan="3" style="text-align: center;font-size: 12px;">xx-xx-xxxx</td>
+            <th colspan="2">Estimated Complete Date:</th>
+            <td colspan="2" class="lynx">31-12-2020</td>
+            <th colspan="2" class="work">Email:</th>
+            <th colspan="8" class="lynx"></th>
+        </tr>
+
+
+    </table>
+
+
+    <br>
+
+    <table>
+
+        <tr>
+            <th colspan="21" class="scope">SCOPE OF WORK
+            </th>
+        </tr>
+
+        <tr>
+            <th colspan="21" style="font-size: 11px;">
+                Detail Needed- Be as descriptive as possible and if there are multiples of items please specify how many. Details and numbers of units help fixed assets determine asset value and will help eliminate questions and the need to resubmit proposals or invoices.
+            </th>
+        </tr>
+
+
+        <tr style="height: 80px;">
+            <td colspan="21" class="provide">
+                Provide JENEsys Hardware as submitted by Wells Fargo on JENE order forms. Pre-Mount equipment in v 2.54 Admin Panels and ship to site for Site Electrical/BMS Contractor to Install. Site Contractor responsible to provide on site integration, graphics,
+                schedules, alarms and configuration. Station to be returned to Lynxspring for review. <span class="text">BExxx Site to have xxxxxxxxxxx.</span>
+            </td>
+        </tr>
+
+        <tr>
+            <th colspan="21" class="install" style="text-align: left;">INSTALLATION</th>
+        </tr>
+
+        <tr>
+            <th colspan="5" class="install">DETAILED DESCRIPTION</th>
+            <th colspan="8" class="install">PRODUCT / MATERIAL / EQUIPMENT
+            </th>
+            <th rowspan="22" colspan="1" style="border: none;"></th>
+            <th colspan="6" class="install"> LABOR / SERVICE </th>
+            <th colspan="1" rowspan="2">TOTAL PRODUCT & LABOR</th>
+        </tr>
+
+        <tr>
+            <th colspan="5" style="text-align: left;font-size: 11px;">
+                <br> WF needs to see the Labor Costs associated with the<br> Product. If Quote is for labor only, leave Product Section <br>blank. <span class="text">Include separate lines for HVAC components as<br>
+                    well as separate lines for equipent and materials related<br> to that component. <br><br>
+                    Include separate lines for controls components (i.e. <br>controller devices such as JENEsys,
+                    thermostats,<br>
+                    miscellaneous materials). Include labor associated with<br> specific equipment on the same
+                    line.</span>
+            </th>
+
+            <th colspan="1">Manufacturer</th>
+            <th colspan="1">Model #</th>
+            <th colspan="1">Serial # (if available)</th>
+            <th colspan="1">Qty.</th>
+            <th colspan="1">Each Price </th>
+            <th colspan="1">Each Mark-Up</th>
+            <th colspan="1">TOTAL PRODUCT</th>
+            <th colspan="1">Taxable? (Y/N)</th>
+            <th colspan="1"># People</th>
+            <th colspan="1"># Hours per Person</th>
+            <th colspan="1">Hourly Bill Rate</th>
+            <th colspan="1">Union Rate (Y/N)</th>
+            <th colspan="1">TOTAL LABOR</th>
+            <th colspan="1">Labor Taxable? (Y/N)</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                Labor to set up Controller and basic station for equipment sample <br>graphics, project management and meetings
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">Labor</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1" style="padding-left: 15px;">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1">N</td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                Admin Panel V2.54 Prewired with terminal strip, IO 34 & IO 16 module,<br> Plug value of $410 for JENE is included. Prepaid from EOL Admin Panel <br>inventory. Includes freight in and shipping out. Set up labor of 9 hours is<br> included.
+                For 2.54 panels, display will added retroactively once diplay is<br> approved by WF. Panels are from prepaid inventory value per panel is<br> $3814.06 with shipping charges credit of $270.00 and $1305 of set up<br> labor for a total value
+                of $5417.46 per panel
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">Lynxspring V2.54 Admin <br> Panel LYNX20ISPR2.54</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">N</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                Review Final Station for Wells Fargo Standards. Contractor to make a <br>backup copy of each station at completion and email to the Wells Fargo<br> PM and Lynxspring for review.
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">Labor</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1">N</td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                <br> Pony Panel with two 34-IO modules
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">LYNX-18ISP-IO68v2 <br>panel</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                JENE-PC8000 Controller with 10 Device Core & 50 Points. Includes<br> standard open drivers. Supports up to 10 devices and 50 points. Requires <br>Niagara 4.0 and higher. Price is less the base $410.00 in V2.52 quote. 3 <br>year Maintenance
+                is included
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE 8010/JENE 8010 3 Year Mtnc</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr style="height: 30px;">
+            <td colspan="5" style="text-align: left;">
+                JENE-PC8000 Controller with 25 Device Core & 1,250 Points. Includes<br> standard open drivers. Supports up to 25 devices and 1,250 points.<br> Requires Niagara 4.0 and higher. Price is less the base $410.00 in V2.52
+                <br> quote. 3 year Maintenance is included
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE 8025/JENE 8025 3 Year Mtnc</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">N</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even" style="height: 80px !important;">
+            <td colspan="5" style="text-align: left;">
+                JENE-PC8000 Controller with 100 Device Core & 5000 Points. Includes <br> standard open drivers. Supports up to100 devices and 5000 points. <br> Requires Niagara 4.0 and higher. Price is less the base $410.00 in V2.52 <br> quote. 3 year
+                Maintenance is included
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE 8100/JENE 8100 3 Year Mtnc</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                JENE-PC8000 Controller with 200 Device Core & 10,000 Points. Includes<br> standard open drivers. Supports up to 200 devices and 10,000points.<br> Requires Niagara 4.0 and higher. Price is less the base $410.00 in V2.52 <br>quote. 3 year
+                Maintenance is included
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE 8200/JENE 8200 3 Year Mtnc</td>
+            <td colspan="1"></td>
+            <td colspan="1" class="bord"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                Supervisor 100 + 3 year maintenance.
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE-SUP 100 w 3 year maintence</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                Supervisor UNL + 3 year maintenance.
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE-SUP-UNL w 3 year maintence</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                JENEsys EDGE 414 Programmable VAV with wall sensor and 10K Type III <br> 4 inch duct supply air sensor
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE Edge 414 CR package</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                JENEsys EDGE 414 Programmable VAV for Conference Room with 8300 <br>Viconics BACnet Thermostat with CO2 card and 10K Type III 4 inch duct<br> supply air sensor
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE Edge 414 CR package</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                JENESys EDGE 414 Dual Duct Actuator
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">LMV-D3-MFT</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                JENEsys Edge 534 250 pt, 5 devices with 3 Year Maintenance
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE EDGE 534-250-N4 / 250-SMA-3YR</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                JENEsys Edge 514 100 pt, 5 devices with 3 Year Maintenance
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE EDGE 514-100-N4 / 100-SMA-3YR</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                Add on dual port RS-485 module for the JENE-PC8000
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE-PC8000-485</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">
+                Wells Lighting Panel in Enclosure - Rittal enclosure with 6 functional<br> devices relays, all taken to terminal
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">6 relay panel</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                Add on single port Lon FTT10A module for the JENE-PC8000
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">JENE-PC8000-LON</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"> -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">
+                Like the Onyxx 534 Hardware, this Expansion Module includes 34 IO<br> points: 16 Universal Inputs; 10 Digital Outputs; 8 Analog Outputs. Onyxx<br> Network Connector and 24VAC Terminal Block. Works with JENEsys-
+                <br>EDGE534 and XM-IO34-B, up to 7 XM34IO's may be connected to the 534 for 306 total IO connections. Last XM34IO in comm bus must be <br>terminated.
+            </td>
+
+            <td colspan="1">Lynxspring</td>
+            <td colspan="1">Onyxx-XM34IO</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"> -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <th colspan="11" style="border: none;"></th>
+
+            <th>$ -</th>
+            <td colspan="2" style="border: none;"></td>
+            <td colspan="1">0</td>
+            <td colspan="1">0</td>
+            <th colspan="1" style="background-color: #808080;"></th>
+            <th colspan="1" style="background-color: #808080;"></th>
+            <th colspan="1">$ -</th>
+            <th colspan="1" style="background-color: #808080;"></th>
+            <th colspan="1">$ -</th>
+        </tr>
+
+
+    </table>
+
+
+    <br><br><br><br><br><br><br>
+
+    <table style="width: 100%;">
+
+        <tr>
+            <th colspan="20" class="demo" style="text-align: left;">DEMO / REMOVAL / PATCHING / REPAIRS / RELO </th>
+            <th colspan="1" rowspan="3">TOTAL PRODUCT & LABOR</th>
+        </tr>
+
+        <tr>
+            <th colspan="13" class="demo">DEMO - PRODUCT/ MATERIALS</th>
+            <th colspan="1" rowspan="7" style="border: none;"></th>
+            <th colspan="6" class="demo">DEMO - LABOR</th>
+        </tr>
+
+        <tr>
+            <th colspan="5" class="text">Include costs of demolition and demolition labor.</th>
+            <th colspan="1" style="width: 20px;"></th>
+            <th colspan="1" style="width: 20px;"></th>
+            <th colspan="2">Qty.</th>
+            <th colspan="1">Price Each</th>
+            <th colspan="2">TOTAL DEMO</th>
+            <th colspan="1">Taxable? (Y/N)</th>
+
+            <th colspan="1"># People</th>
+            <th colspan="1"># Hours per Person</th>
+            <th colspan="1">Hourly Bill Rate</th>
+            <th colspan="1">Union Rate (Y/N)</th>
+            <th colspan="1">TOTAL LABOR</th>
+            <th colspan="1">Labor Taxable? (Y/N)</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">Demolition - Removal</td>
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="2"></td>
+            <td colspan="1">$ -</td>
+            <th colspan="2">$ -</th>
+            <td colspan="1"></td>
+
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+            <td colspan="1">$ -</td>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+            <td colspan="1"></td>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">Demolition - Recycling</td>
+            <td colspan="1"></td>
+            <th colspan="1"></th>
+            <th colspan="2"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="2">$ -</th>
+            <th colspan="1"></th>
+
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <td colspan="5" style="text-align: left;">Patching and Repairs (walls, ceilings)</td>
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+            <th colspan="2"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="2">$ -</th>
+            <th colspan="1"></th>
+
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="5" style="text-align: left;">Patching and Repairs (roofing repairs)</td>
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+            <th colspan="2"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="2">$ -</th>
+            <th colspan="1"></th>
+
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr class="even">
+            <th colspan="5"></th>
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+            <th colspan="2"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="2">$ -</th>
+            <th colspan="1"></th>
+
+            <th colspan="1"></th>
+            <th colspan="1"></th>
+            <td colspan="1">$ -</td>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+            <th colspan="1"></th>
+            <th colspan="1">$ -</th>
+        </tr>
+
+        <tr>
+            <th colspan="10" style="border: none;"></th>
+            <th colspan="2">$ -</th>
+            <th colspan="1" style="border: none;"></th>
+            <th colspan="1" style="border: none;"></th>
+            <th colspan="1">0</th>
+            <th colspan="1">0</th>
+            <th colspan="1" style="background-color: #808080;"></th>
+            <th colspan="1" style="background-color: #808080;"></th>
+            <th colspan="1">$ -</th>
+            <th colspan="1" style="background-color: #808080;"></th>
+            <th colspan="1">$ -</th>
+        </tr>
+    </table>
+
+
+    <br><br><br><br><br><br><br>
+
+    <table style="width: 50%;">
+        <tr>
+            <th colspan="13" class="demo">Assumptions and Clarifications
+            </th>
+        </tr>
+
+        <tr style="height:20px;">
+            <td colspan="13" class="assume">Assumes local contractor will integrate all existing devices and complete all necessary graphics. </td>
+        </tr>
+    </table>
+
+
+    <br><br><br><br>
+
+    <table style="width: 50%;margin-left: 430px;">
+        <tr>
+            <th colspan="11" rowspan="3" style="border: none;"></th>
+            <th colspan="9" style="text-align: right;">Manually Insert Tax $ are required</th>
+        </tr>
+
+        <tr>
+            <th colspan="2" style="font-size: 12px;">ENTER TAX RATE</th>
+            <th colspan="3" style="border: none;"></th>
+            <th colspan="1">PRE-TAX</th>
+            <th colspan="1">TAX</th>
+            <th colspan="2">TOTAL</th>
+        </tr>
+
+        <tr>
+            <th colspan="2" class="dollar">0.00%</th>
+            <td colspan="3" class="total">PRODUCT</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <th colspan="13" rowspan="5" style="border: none;"></th>
+            <td colspan="3" class="total">LABOR</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">SUBTOTAL</td>
+            <th colspan="1">$ -</th>
+            <th colspan="1">$ -</th>
+            <th colspan="2">$ -</th>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">DEMO PRODUCT</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">DEMO LABOR</td>
+            <td colspan="1">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">SUBTOTAL</td>
+            <th colspan="1">$ -</th>
+            <th colspan="1">$ -</th>
+            <th colspan="2">$ -</th>
+        </tr>
+
+        <tr>
+            <th colspan="12" rowspan="4" style="border: none;"></th>
+            <th colspan="1" rowspan="4" class="rotate">if<br>Applicable</th>
+            <td colspan="3" class="total">FREIGHT</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">SHIPPING & HANDLING</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">PROFIT & OH</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">INSURANCE</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="1" class="dollar">$ -</td>
+            <td colspan="2">$ -</td>
+        </tr>
+
+        <tr>
+            <th colspan="13" style="border: none;"></th>
+            <th colspan="3" class="total">TOTAL</th>
+            <th colspan="1">$ -</th>
+            <th colspan="1">$ -</th>
+            <th colspan="2">$ -</th>
+        </tr>
+
+
+    </table>
+
+
+</body>
+
+</html>

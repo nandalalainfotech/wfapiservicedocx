@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        table {
+            /* border: none; */
+            border-collapse: collapse;
+            /* text-align: center; */
+        }
+        
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: Verdana;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            font-family: Calibri;
+            font-size: 12px;
+        }
+        
+        .rotate {
+            -webkit-transform: rotate(-90deg);
+            background-color: #D9D9D9;
+            border: none;
+            width: 100px;
+            font-size: 14px;
+            /* margin-right: 30px; */
+            /* padding-left: 30px; */
+        }
+        
+        .wells {
+            font-size: 28px;
+            font-weight: lighter;
+            border: none !important;
+        }
+        
+        .xx {
+            background-color: #F2F2F2;
+            border: 1px solid black !important;
+        }
+        
+        .project {
+            background-color: #808080;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .work {
+            text-align: right;
+        }
+        
+        .lynx {
+            background-color: #F2F2F2;
+            text-align: left;
+            font-size: 14px;
+        }
+        
+        .scope {
+            text-align: left;
+            height: 30px;
+            background-color: #808080;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .provide {
+            background-color: #C5D9F1;
+            text-align: left;
+            font-size: 14px;
+            padding-bottom: 50px;
+        }
+        
+        .install {
+            text-align: center;
+            background-color: #808080;
+            color: white;
+            height: 20px;
+            font-size: 16px;
+        }
+        
+        .demo {
+            background-color: #808080;
+            height: 20px;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .assume {
+            text-align: left;
+            font-size: 16px;
+            padding-bottom: 60px;
+        }
+        
+        .dollar {
+            background-color: #F2DCDB;
+        }
+        
+        .total {
+            text-align: right;
+        }
+        
+        .even {
+            background-color: #F2F2F2;
+        }
+        
+        .text {
+            color: #FF0000;
+        }
+        
+        .bord {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <table style="width: 100%;">
+
+        <tr>
+
+            <th colspan="21" class="wells">
+                <img src='.././images/wellsfargo.jpg' style="width: 250px;height: 250px;float: left;background-color: yellow;">
+                <!-- <img src="data&colon;image/png;base64,...">  -->
+                <!-- {{Wellsfargo.mainTitle}} -->
+            </th>
+
+        </tr>
+        <tr>
+            <th colspan="17" style="border: none;"></th>
+            <th colspan="2" style="border: none;"></th>
+
+        </tr>
+        <tr style="height: 35px;">
+            <th colspan="17" style="border: none;"></th>
+            <th colspan="2">Date Submitted:</th>
+            <th colspan="2" class="xx">{{Wellsfargo.dateSubmitted}}</th>
+        </tr>
+        <tr>
+            <th colspan="10" class="project">{{Wellsfargo.tableOneTitle}}
+            </th>
+            <th rowspan="8" colspan="1" style="width: 40px;border: none;"></th>
+            <th colspan="10" class="project">{{Wellsfargo.tableTwoTitle}}
+            </th>
+        </tr>
+
+        <tr>
+            <th colspan="4" class="work">Project # or Work Order #</th>
+            <th colspan="6" class="lynx">{{Wellsfargo.projectOrWorkOrder}}</th>
+            <th colspan="2" class="work">Company Name:</th>
+            <td colspan="4" class="lynx">{{Wellsfargo.companyName}}</td>
+            <th colspan="2" class="work">WF Vendor Number:</th>
+            <th colspan="2" class="lynx">{{Wellsfargo.wfVendOrNumber}}</th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">WF Project/ Property Manager</th>
+            <th colspan="6" class="lynx">{{Wellsfargo.wfProjectOrPropertyManager}}</th>
+            <th colspan="2" class="work">Remit To Address:</th>
+            <td colspan="4" class="lynx">{{Wellsfargo.remitToAddress}}</td>
+            <th colspan="2" class="work">Proposal Number:</th>
+            <td colspan="2" class="lynx" style="text-align: center;">{{Wellsfargo.proposalNumber}}</td>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">BE Number:</th>
+            <th colspan="6" class="lynx">{{Wellsfargo.beNumber}}</th>
+            <th colspan="2" class="work">City, State, Zip :</th>
+            <td colspan="4" class="lynx">{{Wellsfargo.cityStateZip}}</td>
+            <th colspan="2" class="work">WF Contract Number:</th>
+            <th colspan="2" class="lynx">{{Wellsfargo.wfContractNumber}}</th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">Building / Project Name:</th>
+            <th colspan="6" class="lynx">{{Wellsfargo.buildingOrProjectName}}</th>
+            <th colspan="2" class="work">Contact Name:</th>
+            <th colspan="4" class="lynx">{{Wellsfargo.contactName}}</th>
+            <th colspan="2" class="work">Change Order #:</th>
+            <th colspan="2" class="lynx">{{Wellsfargo.changeOrder}}</th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">BE Service or Delivery Address</th>
+            <th colspan="6" class="lynx">{{Wellsfargo.beServiceOrDeliveryAddress}}</th>
+            <th colspan="2" class="work">Phone:</th>
+            <td colspan="4" class="lynx">{{Wellsfargo.phone}}</td>
+            <th colspan="2" class="work">Change Order Previous PO#:</th>
+            <th colspan="2" class="lynx">{{Wellsfargo.changeOrderPreviousPO}}</th>
+        </tr>
+        <tr>
+            <th colspan="4" class="work">Project Area (sq.ft.):</th>
+            <th colspan="6" class="lynx">{{Wellsfargo.projectArea}}</th>
+            <th colspan="2" class="work">Cell:</th>
+            <td colspan="4" class="lynx">{{Wellsfargo.cell}}</td>
+            <th colspan="4" class="lynx"></th>
+        </tr>
+        <tr style="height: 40px;">
+            <th colspan="3">Estimated Start Date:</th>
+            <td colspan="3" style="text-align: center;font-size: 12px;">{{Wellsfargo.estimatedStartDate}}</td>
+            <th colspan="2">Estimated Complete Date:</th>
+            <td colspan="2" class="lynx">{{Wellsfargo.estimatedCompleteDate}}</td>
+            <th colspan="2" class="work">Email:</th>
+            <th colspan="8" class="lynx">{{Wellsfargo.email}}</th>
+        </tr>
+
+
+    </table>
+
+
+    <br><br>
+
+    <table>
+
+        <tr>
+            <th colspan="22" class="scope">{{Wellsfargo.scopeTitle}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="22" style="font-size: 10px;text-align: center !important;">
+                {{Wellsfargo.scopeSubHeadOne}}
+            </th>
+        </tr>
+
+
+        <tr style="height: 80px;">
+            <td colspan="22" class="provide">
+                <span>{{Wellsfargo.scopeSubDescription_D1}}</span>
+                <span style="color: #FF0000;">{{Wellsfargo.scopeSubDescription_D2}}</span>
+            </td>
+        </tr>
+
+        <tr>
+            <th colspan="22" class="install" style="text-align: left;">{{Wellsfargo.installHeading}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="5" class="install">{{Wellsfargo.detailSubHeadOne}}</th>
+            <th colspan="8" class="install">{{Wellsfargo.productSubHeadTwo}}</th>
+            <th colspan="1" rowspan="5" style="border: none !important;"></th>
+            <th colspan="7" class="install"> {{Wellsfargo.laborSubHeadThree}} </th>
+            <th colspan="1" rowspan="2">{{Wellsfargo.installHeadingColumn16}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="5" style="text-align: left;font-size: 11px;width: 25% !important;">
+                <br>
+                <span>{{Wellsfargo.installHeadingColumn1_D1}}</span>
+                <span style="color: #FF0000;">{{Wellsfargo.installHeadingColumn1_D2}}</span>
+                <br><br>
+                <span style="color: #FF0000;">{{Wellsfargo.installHeadingColumn1_D3}}</span>
+            </th>
+
+            <th colspan="1">{{Wellsfargo.installHeadingColumn2}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn3}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn4}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn5}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn6}} </th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn7}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn8}}</th>
+
+            <th colspan="1">{{Wellsfargo.installHeadingColumn9}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn10}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn11}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn12}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn13}}</th>
+            <th colspan="1">{{Wellsfargo.installHeadingColumn14}}</th>
+
+            <th colspan="1">{{Wellsfargo.installHeadingColumn15}}</th>
+        </tr>
+
+        {{#each Wellsfargo.installColumns}}
+        <tr>
+            <td colspan="5" style="text-align: left;">{{this.coloumn1}}</td>
+            <td colspan="1">{{this.coloumn2}}</td>
+            <td colspan="1">{{this.coloumn3}}</td>
+            <td colspan="1">{{this.coloumn4}}</td>
+            <td colspan="1">{{this.coloumn5}}</td>
+            <td colspan="1">{{this.coloumn6}}</td>
+            <td colspan="1">{{this.coloumn7}}</td>
+            <td colspan="1">{{this.coloumn8}}</td>
+
+            <td colspan="1">{{this.coloumn9}}</td>
+            <td colspan="1">{{this.coloumn10}}</td>
+            <td colspan="1">{{this.coloumn11}}</td>
+            <td colspan="1">{{this.coloumn12}}</td>
+            <td colspan="1">{{this.coloumn13}}</td>
+            <td colspan="1">{{this.coloumn14}}</td>
+            <td colspan="1">{{this.coloumn15}}</td>
+            <td colspan="2">{{this.coloumn16}}</td>
+        </tr>
+        {{/each}}
+
+        <tr>
+            <th colspan="11" style="border: none;"></th>
+
+            <td colspan="1">{{Wellsfargo.totalProduct}}</td>
+            <td colspan="1" style="border: none;"></td>
+
+            <td colspan="1" style="border: none;"></td>
+            <td colspan="1">{{Wellsfargo.totalPeople}}</td>
+            <td colspan="1">{{Wellsfargo.totalHoursPerPerson}}</td>
+            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalHourlyBillRate}}</th>
+            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalUnionRate}}</th>
+            <td colspan="1">{{Wellsfargo.totalLabor}}</td>
+            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalLaborTaxable}}</th>
+            <td colspan="2">{{Wellsfargo.totalProductAndLabor}}</td>
+        </tr>
+    </table>
+
+
+    <br>
+
+    <table style="width: 100%;">
+
+        <tr>
+            <th colspan="20" class="demo" style="text-align: left;">{{Wellsfargo.demoHeading}}</th>
+            <th colspan="2" rowspan="3">{{Wellsfargo.demoHeadingColumn14}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="13" class="demo">{{Wellsfargo.demoSubHeadOne}}</th>
+            <th colspan="1" rowspan="3" style="border:none;"></th>
+            <th colspan="6" class="demo">{{Wellsfargo.demoSubHeadTwo}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="6" class="text" style="width: 30% !important;">{{Wellsfargo.demoHeadingColumn1}}</th>
+            <th colspan="1" style="width: 50px;">{{Wellsfargo.demoHeadingColumn2}}</th>
+            <th colspan="1" style="width: 50px;">{{Wellsfargo.demoHeadingColumn3}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn4}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn5}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn6}}</th>
+            <th colspan="2">{{Wellsfargo.demoHeadingColumn7}}</th>
+
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn8}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn9}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn10}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn11}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn12}}</th>
+            <th colspan="1">{{Wellsfargo.demoHeadingColumn13}}</th>
+        </tr>
+
+        {{#each Wellsfargo.demoColumns}}
+        <tr class="even">
+            <td colspan="6" style="text-align: left;">{{this.coloumn1}}</td>
+            <td colspan="1">{{this.coloumn2}}</td>
+            <td colspan="1">{{this.coloumn3}}</td>
+            <td colspan="1">{{this.coloumn4}}</td>
+            <td colspan="1">{{this.coloumn5}}</td>
+            <th colspan="1">{{this.coloumn6}}</th>
+            <td colspan="2">{{this.coloumn7}}</td>
+
+            <td colspan="1">{{this.coloumn8}}</td>
+            <td colspan="1">{{this.coloumn9}}</td>
+            <td colspan="1">{{this.coloumn10}}</td>
+            <td colspan="1">{{this.coloumn11}}</td>
+            <th colspan="1">{{this.coloumn12}}</th>
+            <td colspan="1">{{this.coloumn13}}</td>
+            <th colspan="1">{{this.coloumn14}}</th>
+        </tr>
+        {{/each}}
+
+        <tr>
+            <th colspan="10" style="border: none;"></th>
+
+            <th colspan="1">{{Wellsfargo.totalDemo}}</th>
+            <th colspan="2" style="border: none;"></th>
+            <td colspan="1" style="border: none;"></td>
+            <th colspan="1">{{Wellsfargo.totalDemoPeople}}</th>
+            <th colspan="1">{{Wellsfargo.totalDemoHoursPerPerson}}</th>
+            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalDemoHourlyBillRate}}</th>
+            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalDemoUnionRate}}</th>
+            <th colspan="1">{{Wellsfargo.totalDemoLabor}}</th>
+            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalDemoLaborTaxable}}</th>
+            <th colspan="2">{{Wellsfargo.totalDemoProductAndLabor}}</th>
+        </tr>
+
+    </table>
+
+
+    <br><br><br>
+
+    <table style="width: 50%;">
+        <tr>
+            <th colspan="13" class="demo">{{Wellsfargo.clarificationsHeading}}</th>
+        </tr>
+
+        <tr style="height:20px;">
+            <td colspan="13" class="assume">{{Wellsfargo.clarificationDescription}}</td>
+        </tr>
+    </table>
+
+
+    <br><br>
+
+    <table style="width: 50%;margin-left: 750px;">
+        <tr>
+            <th colspan="11" rowspan="3" style="border: none;"></th>
+            <th colspan="11" style="text-align: right;">{{Wellsfargo.taxHeading}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="2" style="font-size: 12px;">{{Wellsfargo.taxHeadingColoumn1}}</th>
+            <th colspan="3" style="border: none;"></th>
+            <th colspan="1">{{Wellsfargo.taxHeadingColoumn2}}</th>
+            <th colspan="1">{{Wellsfargo.taxHeadingColoumn3}}</th>
+            <th colspan="2">{{Wellsfargo.totalTaxHeading}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="2" class="dollar">{{Wellsfargo.taxRate}}</th>
+            <td colspan="3" class="total">{{Wellsfargo.product}}</td>
+            <td colspan="1">{{Wellsfargo.productPreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.productTax}}</td>
+            <td colspan="2">{{Wellsfargo.productTotal}}</td>
+        </tr>
+
+        <tr>
+            <th colspan="13" rowspan="5" style="border: none;"></th>
+            <td colspan="3" class="total">{{Wellsfargo.labor}}</td>
+            <td colspan="1">{{Wellsfargo.laborPreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.laborTax}}</td>
+            <td colspan="2">{{Wellsfargo.laborTotal}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">{{Wellsfargo.subTotal1}}</td>
+            <th colspan="1">{{Wellsfargo.subTotal1PreTax}}</th>
+            <th colspan="1">{{Wellsfargo.subTotal1Tax}}</th>
+            <th colspan="2">{{Wellsfargo.subTotal1Total}}</th>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">{{Wellsfargo.demoProduct}}</td>
+            <td colspan="1">{{Wellsfargo.demoProductPreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.demoProductTax}}</td>
+            <td colspan="2">{{Wellsfargo.demoProductTotal}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">{{Wellsfargo.demoLabor}}</td>
+            <td colspan="1">{{Wellsfargo.demoLaborPreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.demoLaborTax}}</td>
+            <td colspan="2">{{Wellsfargo.demoLaborTotal}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">{{Wellsfargo.subTotal2}}</td>
+            <th colspan="1">{{Wellsfargo.subTotal2PreTax}}</th>
+            <th colspan="1">{{Wellsfargo.subTotal2Tax}}</th>
+            <th colspan="2">{{Wellsfargo.subTotal2Total}}</th>
+        </tr>
+
+        <tr>
+            <th colspan="12" rowspan="4" style="border: none;"></th>
+            <th colspan="1" rowspan="4" class="rotate">{{Wellsfargo.rotationText}}</th>
+            <td colspan="3" class="total">{{Wellsfargo.freight}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.freightPreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.freightTax}}</td>
+            <td colspan="2">{{Wellsfargo.freightTotal}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">{{Wellsfargo.shipping}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.shippingPreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.shippingTax}}</td>
+            <td colspan="2">{{Wellsfargo.shippingTotal}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">{{Wellsfargo.profit}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.profitPreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.profitTax}}</td>
+            <td colspan="2">{{Wellsfargo.profitTotal}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="3" class="total">{{Wellsfargo.insurance}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.insurancePreTax}}</td>
+            <td colspan="1" class="dollar">{{Wellsfargo.insuranceTax}}</td>
+            <td colspan="2">{{Wellsfargo.insuranceTotal}}</td>
+        </tr>
+
+        <tr>
+            <th colspan="13" style="border: none;"></th>
+            <th colspan="3" class="total">{{Wellsfargo.allTotal}}</th>
+            <th colspan="1">{{Wellsfargo.allTotalTaxPreTax}}</th>
+            <th colspan="1">{{Wellsfargo.allTotalTax}}</th>
+            <th colspan="2">{{Wellsfargo.allMaterialTotal}}</th>
+        </tr>
+
+
+    </table>
+
+
+</body>
+
+</html>
