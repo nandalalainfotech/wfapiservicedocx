@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'wellsfargoDocx'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_809F60A513DD4B92BEA40D96F7D45F51 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A37410F6A60A459EBE6882C7C2B1C50F }}
           package: .
