@@ -1,506 +1,936 @@
-<!DOCTYPE html>
-<html>
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'
+    xmlns='http ://www.w3.org/TR /REC-html40'>
 
 <head>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <meta charset="utf-8" />
     <style>
-        table {
-            /* border: none; */
-            border-collapse: collapse;
-            /* text-align: center; */
+        .proposal {
+            text-align: center !important;
+            color: rgb(0, 92, 169) !important;
+            font-family: Calibri !important;
+            font-size: 21px !important;
+            font-weight: 600 !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
-        
-        th {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: center;
-            font-family: Verdana;
-            font-size: 12px;
-            font-weight: 600;
-        }
-        
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-            text-align: center;
-            font-family: Calibri;
-            font-size: 12px;
-        }
-        
-        .rotate {
-            -webkit-transform: rotate(-90deg);
-            background-color: #D9D9D9;
-            border: none;
-            width: 100px;
-            font-size: 14px;
-            /* margin-right: 30px; */
-            /* padding-left: 30px; */
-        }
-        
-        .wells {
-            font-size: 28px;
-            font-weight: lighter;
-            border: none !important;
-        }
-        
-        .xx {
-            background-color: #F2F2F2;
-            border: 1px solid black !important;
-        }
-        
-        .project {
-            background-color: #808080;
-            color: white;
-            font-size: 12px;
-        }
-        
-        .work {
-            text-align: right;
-        }
-        
-        .lynx {
-            background-color: #F2F2F2;
-            text-align: left;
-            font-size: 14px;
-        }
-        
+
+
         .scope {
-            text-align: left;
-            height: 30px;
-            background-color: #808080;
-            color: white;
-            font-size: 16px;
+            text-align: center !important;
+            color: gray;
+            font-family: Calibri !important;
+            font-size: 26px !important;
+            font-weight: 900 !important;
         }
-        
-        .provide {
-            background-color: #C5D9F1;
-            text-align: left;
-            font-size: 14px;
-            padding-bottom: 50px;
+
+        th {
+            font-family: Calibri;
+            font-size: 11px !important;
+            color: black;
+            margin: 0 !important;
+            padding: 0 !important;
         }
-        
-        .install {
+
+        td {
+            font-family: Calibri;
+            color: rgb(0, 0, 255);
+            font-size: 10px !important;
+            font-weight: bold;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+
+
+        .initial th {
+            font-size: 12px !important;
+            font-family: Calibri !important;
+            font-weight: lighter;
+            text-align: left !important;
+        }
+
+        table {
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .signed {
+            font-size: 10px;
+            font-family: Calibri;
+            color: black;
+            font-weight: 400 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .line {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .executed {
+            font-size: 11px;
+            font-family: Calibri;
+            color: black;
+            font-weight: 400 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .specific {
+            font-size: 12px;
+            font-family: Calibri;
+            color: black;
+        }
+
+        .inclusion {
+            font-size: 12px;
+            font-family: Calibri;
+            color: black;
+            font-weight: 700;
+        }
+
+        .general {
+            font-size: 12px;
+            font-family: Calibri;
+            color: black;
+        }
+
+
+
+        .report li {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .category th {
+            text-align: left !important;
+        }
+
+        .admin tr {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .admin th {
+            font-size: 12px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: lighter;
+            text-align: left !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .statement {
+            font-size: 15px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: bold;
+            text-align: center !important;
+        }
+
+        .description table {
+            border: 1px solid black !important;
+            border-collapse: collapse !important;
+        }
+
+        .description td {
+            border: 1px solid black !important;
+            border-collapse: collapse !important;
+            font-size: 13px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: lighter;
+        }
+
+        .description th {
+            border: 1px solid black !important;
+            border-collapse: collapse !important;
+            font-size: 13px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: bold;
+        }
+
+        .description tr th ul li {
+            list-style-type: none !important;
+        }
+
+        .total th td {
+            text-align: center !important;
+        }
+
+        .total th {
+            font-size: 14px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: bold;
+        }
+
+        .total td {
+            font-size: 14px !important;
+            font-family: Calibri !important;
+            color: rgb(0, 92, 169);
+            font-weight: bold;
+        }
+
+        .last {
+            font-size: 14px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: bold;
+            text-align: right !important;
+        }
+
+        .report th ol li {
+            font-size: 10px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: lighter;
+            text-align: left !important;
+            list-style-type: decimal-bracket !important;
+            text-decoration: none !important;
+        }
+
+        @page Section1 {
+            margin: 0.75in 0.75in 0.75in 0.75in;
+            size: 841.7pt 595.45pt;
+            mso-page-orientation: landscape;
+            mso-header-margin: 0.5in;
+            mso-header: h1;
+            mso-footer-margin: 0.5in;
+            mso-footer: f1;
+        }
+
+
+
+        .header {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .header h4 {
             text-align: center;
-            background-color: #808080;
-            color: white;
-            height: 20px;
-            font-size: 16px;
+            color: gray;
+            font-size: 24px;
+            padding: 0 !important;
+            margin: 0 !important;
         }
-        
-        .demo {
-            background-color: #808080;
-            height: 20px;
+
+        .header p {
             text-align: center;
-            color: white;
-            font-size: 14px;
+            color: gray;
+            font-size: 18px;
+            padding: 0 !important;
+            margin: 0 !important;
         }
-        
-        .assume {
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        .services {
             text-align: left;
-            font-size: 16px;
-            padding-bottom: 60px;
+            font-size: 13px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: lighter;
         }
-        
-        .dollar {
-            background-color: #F2DCDB;
+
+        p.header {
+            text-align: center;
+            font-size: 22px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: bold;
+
         }
-        
-        .total {
+
+        .headerFooter {
+            text-align: center;
+            font-size: 13px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: lighter;
+        }
+
+        .date {
             text-align: right;
-        }
-        
-        .even {
-            background-color: #F2F2F2;
-        }
-        
-        .text {
-            color: #FF0000;
-        }
-        
-        .bord {
-            border: 1px solid black;
+            margin-left: 20px !important;
+            font-size: 13px !important;
+            font-family: Calibri !important;
+            color: black;
+            font-weight: lighter;
         }
     </style>
 </head>
 
 <body>
+    <div class=Section1>
+        <table style='margin-left:50in;'>
+            <tr style='height:1pt;mso-height-rule:exactly'>
+                <td>
+                    <div style='mso-element:header' id=h1>
+                        <p class="header">
+
+                        </p>
+                    </div>
+                    &nbsp;
+                </td>
+
+                <td>
+                    <div style='mso-element:footer' id=f1>
+                        <span class="services">
+                            <em>Lynxspring Proposal for Services Agreement</em>
+                        </span>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        <span class="headerFooter" style="text-align: center !important;">
+                            <em> Page
+                                <span style='mso-field-code:PAGE'></span>
+                                of
+                                <span style='mso-field-code:NUMPAGES'></span>
+                            </em>
+                        </span>
+                        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        <span class="date" style="text-align: right !important;">
+                            <em>April 18,2022</em>
+                        </span>
+                    </div>
+                    &nbsp;
+                </td>
+            </tr>
+
+        </table>
+
+        <!-- -------------page-1--------------------- -->
+        <center>
+            <img class="lynxximg" width="250" height="110"
+                src="data:image/jpg;base64,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" />
+        </center>
+
+        <h4 class="proposal">PROPOSAL FOR SERVICES</h4>
+
+        <table>
 
 
-    <table style="width: 100%;">
+            <tr>
+                <th colspan="3"></th>
+                <td colspan="3">Date</td>
+                <th colspan="3">PROJECT:</th>
+                <td colspan="3">Project Name</td>
+            </tr>
 
-        <tr>
+            <tr>
+                <th colspan="3">FROM (Consultant):</th>
+                <th colspan="3">Lynxspring, Inc.
+                    1210 NE Windsor
+                    Lee’s Summit, Missouri 64086
+                </th>
+                <th colspan="3">TO (Client):</th>
+                <td colspan="3">Client Name
+                    Address
+                    Address 2
+                    City, State Zip
+                </td>
+            </tr>
 
-            <th colspan="21" class="wells">
-                <img src='.././images/wellsfargo.jpg' style="width: 250px;height: 250px;float: left;background-color: yellow;">
-                <!-- <img src="data&colon;image/png;base64,...">  -->
-                <!-- {{Wellsfargo.mainTitle}} -->
-            </th>
+            <tr>
+                <th colspan="3">SENT VIA:</th>
+                <td colspan="3">E-mail, Facsimile, Federal Express, Courier, US Postal</td>
+                <td colspan="6"></td>
+            </tr>
+        </table>
 
-        </tr>
-        <tr>
-            <th colspan="17" style="border: none;"></th>
-            <th colspan="2" style="border: none;"></th>
+        <hr class="line" style="height:1px;color:black;background-color:black;margin: 0;padding: 0;">
 
-        </tr>
-        <tr style="height: 35px;">
-            <th colspan="17" style="border: none;"></th>
-            <th colspan="2">Date Submitted:</th>
-            <th colspan="2" class="xx">{{Wellsfargo.dateSubmitted}}</th>
-        </tr>
-        <tr>
-            <th colspan="10" class="project">{{Wellsfargo.tableOneTitle}}
-            </th>
-            <th rowspan="8" colspan="1" style="width: 40px;border: none;"></th>
-            <th colspan="10" class="project">{{Wellsfargo.tableTwoTitle}}
-            </th>
-        </tr>
+        <table>
+            <tr>
+                <th colspan="5">SERVICES:</th>
+                <td colspan="5"></td>
+                <td colspan="2">Services Description</td>
+            </tr>
+        </table>
 
-        <tr>
-            <th colspan="4" class="work">Project # or Work Order #</th>
-            <th colspan="6" class="lynx">{{Wellsfargo.projectOrWorkOrder}}</th>
-            <th colspan="2" class="work">Company Name:</th>
-            <td colspan="4" class="lynx">{{Wellsfargo.companyName}}</td>
-            <th colspan="2" class="work">WF Vendor Number:</th>
-            <th colspan="2" class="lynx">{{Wellsfargo.wfVendOrNumber}}</th>
-        </tr>
-        <tr>
-            <th colspan="4" class="work">WF Project/ Property Manager</th>
-            <th colspan="6" class="lynx">{{Wellsfargo.wfProjectOrPropertyManager}}</th>
-            <th colspan="2" class="work">Remit To Address:</th>
-            <td colspan="4" class="lynx">{{Wellsfargo.remitToAddress}}</td>
-            <th colspan="2" class="work">Proposal Number:</th>
-            <td colspan="2" class="lynx" style="text-align: center;">{{Wellsfargo.proposalNumber}}</td>
-        </tr>
-        <tr>
-            <th colspan="4" class="work">BE Number:</th>
-            <th colspan="6" class="lynx">{{Wellsfargo.beNumber}}</th>
-            <th colspan="2" class="work">City, State, Zip :</th>
-            <td colspan="4" class="lynx">{{Wellsfargo.cityStateZip}}</td>
-            <th colspan="2" class="work">WF Contract Number:</th>
-            <th colspan="2" class="lynx">{{Wellsfargo.wfContractNumber}}</th>
-        </tr>
-        <tr>
-            <th colspan="4" class="work">Building / Project Name:</th>
-            <th colspan="6" class="lynx">{{Wellsfargo.buildingOrProjectName}}</th>
-            <th colspan="2" class="work">Contact Name:</th>
-            <th colspan="4" class="lynx">{{Wellsfargo.contactName}}</th>
-            <th colspan="2" class="work">Change Order #:</th>
-            <th colspan="2" class="lynx">{{Wellsfargo.changeOrder}}</th>
-        </tr>
-        <tr>
-            <th colspan="4" class="work">BE Service or Delivery Address</th>
-            <th colspan="6" class="lynx">{{Wellsfargo.beServiceOrDeliveryAddress}}</th>
-            <th colspan="2" class="work">Phone:</th>
-            <td colspan="4" class="lynx">{{Wellsfargo.phone}}</td>
-            <th colspan="2" class="work">Change Order Previous PO#:</th>
-            <th colspan="2" class="lynx">{{Wellsfargo.changeOrderPreviousPO}}</th>
-        </tr>
-        <tr>
-            <th colspan="4" class="work">Project Area (sq.ft.):</th>
-            <th colspan="6" class="lynx">{{Wellsfargo.projectArea}}</th>
-            <th colspan="2" class="work">Cell:</th>
-            <td colspan="4" class="lynx">{{Wellsfargo.cell}}</td>
-            <th colspan="4" class="lynx"></th>
-        </tr>
-        <tr style="height: 40px;">
-            <th colspan="3">Estimated Start Date:</th>
-            <td colspan="3" style="text-align: center;font-size: 12px;">{{Wellsfargo.estimatedStartDate}}</td>
-            <th colspan="2">Estimated Complete Date:</th>
-            <td colspan="2" class="lynx">{{Wellsfargo.estimatedCompleteDate}}</td>
-            <th colspan="2" class="work">Email:</th>
-            <th colspan="8" class="lynx">{{Wellsfargo.email}}</th>
-        </tr>
+        <hr class="line" style="height:1px;color:black;background-color:black;margin: 0;padding: 0;">
+
+        <table>
+            <tr>
+                <th colspan="3">PROJECT DESCRIPTION:</th>
+                <td colspan="3">Description</td>
+                <td colspan="6"></td>
+            </tr>
+
+            <tr>
+                <th colspan="3">TYPE OF PROPOSAL:</th>
+                <td colspan="3">Hourly, Stipulated Sum</td>
+                <td colspan="6"></td>
+            </tr>
+        </table>
+        <p class="signed">Void if not signed in 60 days. Reimbursable expenses @ 1.15 times
+            cost.
+            Additional Services are hourly per “Hourly Rate Schedule” provided in Part 4.2 </p>
 
 
-    </table>
+        <hr style="height:1px;color:black;background-color:black;margin: 0;padding: 0;">
+
+        <table>
+            <tr>
+                <th colspan="4">LIABILITY LIMITATION:</th>
+                <th colspan="4"></th>
+                <th colspan="4">Consultant's Compensation (Refer to “PART 1.5”)</th>
+            </tr>
+        </table>
+
+        <hr class="line" style="height:1px;color:black;background-color:black;margin: 0;padding: 0;">
+
+        <table>
+            <tr>
+                <th colspan="4">PROPOSED SERVICES & FEES:</th>
+                <th colspan="4"></th>
+                <th colspan="4">See Scope of Services Summary on Page 2 & SOW on Page 5</th>
+            </tr>
+
+            <tr>
+                <td colspan="4">1. Description</td>
+                <th colspan="4"></th>
+                <td colspan="4">Hourly, refer to part 4.2</td>
+            </tr>
+        </table>
+
+        <hr class="line" style="height:1px;color:black;background-color:black;margin: 0;padding: 0;">
+
+        <table style="width: 600;">
+            <tr>
+                <th colspan="3">PAYMENT TERMS:</th>
+                <td colspan="3">Net 10 days – 1.5% per month service charge over 30 days.</td>
+                <th colspan="3">INVOICE SCHEDULE:</th>
+                <td colspan="3">See SOW on Page 5</td>
+            </tr>
+        </table>
+
+        <hr class="line" style="height:1px;color:black;background-color:black;margin: 0;padding: 0;">
 
 
-    <br><br>
+        <p class="executed">
+            THIS EXECUTED PROPOSAL FORM represents the Agreement between the Consultant and the Client and supersedes
+            all
+            prior negotiations, representations or agreements, either written or oral. This Proposal may be amended only
+            by
+            written instrument signed by both parties. Upon execution and receipt of this form, together with any
+            retainer
+            amounts indicated, the Consultant will proceed with the project. The person signing acceptance below for the
+            Client does hereby certify that he or she is fully authorized and empowered to execute this Instrument, and
+            to
+            bind the Client hereto, and does in fact so execute this Instrument.
+        </p>
 
-    <table>
-
-        <tr>
-            <th colspan="22" class="scope">{{Wellsfargo.scopeTitle}}</th>
-        </tr>
-
-        <tr>
-            <th colspan="22" style="font-size: 10px;text-align: center !important;">
-                {{Wellsfargo.scopeSubHeadOne}}
-            </th>
-        </tr>
-
-
-        <tr style="height: 80px;">
-            <td colspan="22" class="provide">
-                <span>{{Wellsfargo.scopeSubDescription_D1}}</span>
-                <span style="color: #FF0000;">{{Wellsfargo.scopeSubDescription_D2}}</span>
-            </td>
-        </tr>
-
-        <tr>
-            <th colspan="22" class="install" style="text-align: left;">{{Wellsfargo.installHeading}}</th>
-        </tr>
-
-        <tr>
-            <th colspan="5" class="install">{{Wellsfargo.detailSubHeadOne}}</th>
-            <th colspan="8" class="install">{{Wellsfargo.productSubHeadTwo}}</th>
-            <th colspan="1" rowspan="5" style="border: none !important;"></th>
-            <th colspan="7" class="install"> {{Wellsfargo.laborSubHeadThree}} </th>
-            <th colspan="1" rowspan="2">{{Wellsfargo.installHeadingColumn16}}</th>
-        </tr>
-
-        <tr>
-            <th colspan="5" style="text-align: left;font-size: 11px;width: 25% !important;">
-                <br>
-                <span>{{Wellsfargo.installHeadingColumn1_D1}}</span>
-                <span style="color: #FF0000;">{{Wellsfargo.installHeadingColumn1_D2}}</span>
-                <br><br>
-                <span style="color: #FF0000;">{{Wellsfargo.installHeadingColumn1_D3}}</span>
-            </th>
-
-            <th colspan="1">{{Wellsfargo.installHeadingColumn2}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn3}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn4}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn5}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn6}} </th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn7}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn8}}</th>
-
-            <th colspan="1">{{Wellsfargo.installHeadingColumn9}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn10}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn11}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn12}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn13}}</th>
-            <th colspan="1">{{Wellsfargo.installHeadingColumn14}}</th>
-
-            <th colspan="1">{{Wellsfargo.installHeadingColumn15}}</th>
-        </tr>
-
-        {{#each Wellsfargo.installColumns}}
-        <tr>
-            <td colspan="5" style="text-align: left;">{{this.coloumn1}}</td>
-            <td colspan="1">{{this.coloumn2}}</td>
-            <td colspan="1">{{this.coloumn3}}</td>
-            <td colspan="1">{{this.coloumn4}}</td>
-            <td colspan="1">{{this.coloumn5}}</td>
-            <td colspan="1">{{this.coloumn6}}</td>
-            <td colspan="1">{{this.coloumn7}}</td>
-            <td colspan="1">{{this.coloumn8}}</td>
-
-            <td colspan="1">{{this.coloumn9}}</td>
-            <td colspan="1">{{this.coloumn10}}</td>
-            <td colspan="1">{{this.coloumn11}}</td>
-            <td colspan="1">{{this.coloumn12}}</td>
-            <td colspan="1">{{this.coloumn13}}</td>
-            <td colspan="1">{{this.coloumn14}}</td>
-            <td colspan="1">{{this.coloumn15}}</td>
-            <td colspan="2">{{this.coloumn16}}</td>
-        </tr>
-        {{/each}}
-
-        <tr>
-            <th colspan="11" style="border: none;"></th>
-
-            <td colspan="1">{{Wellsfargo.totalProduct}}</td>
-            <td colspan="1" style="border: none;"></td>
-
-            <td colspan="1" style="border: none;"></td>
-            <td colspan="1">{{Wellsfargo.totalPeople}}</td>
-            <td colspan="1">{{Wellsfargo.totalHoursPerPerson}}</td>
-            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalHourlyBillRate}}</th>
-            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalUnionRate}}</th>
-            <td colspan="1">{{Wellsfargo.totalLabor}}</td>
-            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalLaborTaxable}}</th>
-            <td colspan="2">{{Wellsfargo.totalProductAndLabor}}</td>
-        </tr>
-    </table>
+        <hr class="line" style="height:1px;color:black;background-color:black;margin: 0;padding: 0;">
 
 
-    <br>
+        <table>
+            <tr>
+                <th colspan="4">PROPOSED FOR THE CONSULTANT:</th>
+                <th colspan="4">ACCEPTED FOR THE CLIENT:</th>
+                <td colspan="4"></td>
+            </tr>
 
-    <table style="width: 100%;">
+            <tr>
+                <th colspan="4">LYNXSPRING, INC.</th>
+                <td colspan="4"></td>
+                <td colspan="4">Client Name</td>
+            </tr>
 
-        <tr>
-            <th colspan="20" class="demo" style="text-align: left;">{{Wellsfargo.demoHeading}}</th>
-            <th colspan="2" rowspan="3">{{Wellsfargo.demoHeadingColumn14}}</th>
-        </tr>
+            <tr>
+                <th colspan="6">By</th>
+                <th colspan="6">By</th>
+            </tr>
 
-        <tr>
-            <th colspan="13" class="demo">{{Wellsfargo.demoSubHeadOne}}</th>
-            <th colspan="1" rowspan="3" style="border:none;"></th>
-            <th colspan="6" class="demo">{{Wellsfargo.demoSubHeadTwo}}</th>
-        </tr>
+            <tr>
+                <th colspan="6">Name (printed): </th>
+                <th colspan="6">Name (printed): </th>
+            </tr>
 
-        <tr>
-            <th colspan="6" class="text" style="width: 30% !important;">{{Wellsfargo.demoHeadingColumn1}}</th>
-            <th colspan="1" style="width: 50px;">{{Wellsfargo.demoHeadingColumn2}}</th>
-            <th colspan="1" style="width: 50px;">{{Wellsfargo.demoHeadingColumn3}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn4}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn5}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn6}}</th>
-            <th colspan="2">{{Wellsfargo.demoHeadingColumn7}}</th>
+            <tr>
+                <th colspan="6">Title:</th>
+                <th colspan="6">Title:</th>
+            </tr>
 
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn8}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn9}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn10}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn11}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn12}}</th>
-            <th colspan="1">{{Wellsfargo.demoHeadingColumn13}}</th>
-        </tr>
-
-        {{#each Wellsfargo.demoColumns}}
-        <tr class="even">
-            <td colspan="6" style="text-align: left;">{{this.coloumn1}}</td>
-            <td colspan="1">{{this.coloumn2}}</td>
-            <td colspan="1">{{this.coloumn3}}</td>
-            <td colspan="1">{{this.coloumn4}}</td>
-            <td colspan="1">{{this.coloumn5}}</td>
-            <th colspan="1">{{this.coloumn6}}</th>
-            <td colspan="2">{{this.coloumn7}}</td>
-
-            <td colspan="1">{{this.coloumn8}}</td>
-            <td colspan="1">{{this.coloumn9}}</td>
-            <td colspan="1">{{this.coloumn10}}</td>
-            <td colspan="1">{{this.coloumn11}}</td>
-            <th colspan="1">{{this.coloumn12}}</th>
-            <td colspan="1">{{this.coloumn13}}</td>
-            <th colspan="1">{{this.coloumn14}}</th>
-        </tr>
-        {{/each}}
-
-        <tr>
-            <th colspan="10" style="border: none;"></th>
-
-            <th colspan="1">{{Wellsfargo.totalDemo}}</th>
-            <th colspan="2" style="border: none;"></th>
-            <td colspan="1" style="border: none;"></td>
-            <th colspan="1">{{Wellsfargo.totalDemoPeople}}</th>
-            <th colspan="1">{{Wellsfargo.totalDemoHoursPerPerson}}</th>
-            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalDemoHourlyBillRate}}</th>
-            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalDemoUnionRate}}</th>
-            <th colspan="1">{{Wellsfargo.totalDemoLabor}}</th>
-            <th colspan="1" style="background-color: #808080;">{{Wellsfargo.totalDemoLaborTaxable}}</th>
-            <th colspan="2">{{Wellsfargo.totalDemoProductAndLabor}}</th>
-        </tr>
-
-    </table>
+            <tr>
+                <th colspan="6">Date:</th>
+                <th colspan="6">Date Signed: </th>
+            </tr>
+        </table>
 
 
-    <br><br><br>
-
-    <table style="width: 50%;">
-        <tr>
-            <th colspan="13" class="demo">{{Wellsfargo.clarificationsHeading}}</th>
-        </tr>
-
-        <tr style="height:20px;">
-            <td colspan="13" class="assume">{{Wellsfargo.clarificationDescription}}</td>
-        </tr>
-    </table>
 
 
-    <br><br>
+        <!-- ----------------------page-2------------------------ -->
 
-    <table style="width: 50%;margin-left: 750px;">
-        <tr>
-            <th colspan="11" rowspan="3" style="border: none;"></th>
-            <th colspan="11" style="text-align: right;">{{Wellsfargo.taxHeading}}</th>
-        </tr>
+        <div class="header">
+            <h4>LYNXSPRING SCOPE OF SERVICES SUMMARY</h4>
+            <p>AGREEMENT FOR SERVICES</p>
+        </div>
 
-        <tr>
-            <th colspan="2" style="font-size: 12px;">{{Wellsfargo.taxHeadingColoumn1}}</th>
-            <th colspan="3" style="border: none;"></th>
-            <th colspan="1">{{Wellsfargo.taxHeadingColoumn2}}</th>
-            <th colspan="1">{{Wellsfargo.taxHeadingColoumn3}}</th>
-            <th colspan="2">{{Wellsfargo.totalTaxHeading}}</th>
-        </tr>
+       
+        <table class="report" style="width: 700;">
+            <tr>
+                <th colspan="4" style="text-decoration: underline;">Discovery Phase Services</th>
+                <th colspan="4" style="text-decoration: underline;">Bidding & Negotiation Phase Services</th>
+                <th colspan="4" style="text-decoration: underline;">Studies</th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Initial investigation with report</th>
+                <th colspan="4"><input type="checkbox">Attend pre–bid meeting</th>
+                <th colspan="4"><input type="checkbox">HVAC System’s</th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Prepare Functional Specification documents</th>
+                <th colspan="4"><input type="checkbox">Respond to bidder questions</th>
+                <th colspan="4"><input type="checkbox">Lighting System's</th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Preliminary design documents</th>
+                <th colspan="4"><input type="checkbox">Attend bid opening meeting</th>
+                <th colspan="4"><input type="checkbox">Power System's</th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Preliminary Bill-of-Materials</th>
+                <th colspan="4"><input type="checkbox">Analysis of bids</th>
+                <th colspan="4"><input type="checkbox">Building Energy Analysis</th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Estimate probable cost</th>
+                <th colspan="4"><input type="checkbox">Value Engineering</th>
+                <th colspan="4"><input type="checkbox">Economic Analysis </th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Attend discovery review meetings </th>
+                <th colspan="4">
+                <th colspan="4"><input type="checkbox">Facility Audit's</th>
+            </tr>
+            <tr>
+                <th colspan="4">
+                <th colspan="4">
+                <th colspan="4"><input type="checkbox">Feasibility Study</th>
+            </tr>
+            <tr>
+                <th colspan="4">
+                <th colspan="4">
+                <th colspan="4"><input type="checkbox">IAQ Investigation</th>
+            </tr>
+            <tr>
+                <th colspan="4">
+                <th colspan="4">
+                <th colspan="4"><input type="checkbox">Electrical Coordination Study</th>
+            </tr>
+            <tr>
+                <th colspan="4">
+                <th colspan="4">
+                <th colspan="4"><input type="checkbox">Other: Site Investigation and Analysis</th>
+            </tr>
+        </table>
 
-        <tr>
-            <th colspan="2" class="dollar">{{Wellsfargo.taxRate}}</th>
-            <td colspan="3" class="total">{{Wellsfargo.product}}</td>
-            <td colspan="1">{{Wellsfargo.productPreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.productTax}}</td>
-            <td colspan="2">{{Wellsfargo.productTotal}}</td>
-        </tr>
-
-        <tr>
-            <th colspan="13" rowspan="5" style="border: none;"></th>
-            <td colspan="3" class="total">{{Wellsfargo.labor}}</td>
-            <td colspan="1">{{Wellsfargo.laborPreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.laborTax}}</td>
-            <td colspan="2">{{Wellsfargo.laborTotal}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="3" class="total">{{Wellsfargo.subTotal1}}</td>
-            <th colspan="1">{{Wellsfargo.subTotal1PreTax}}</th>
-            <th colspan="1">{{Wellsfargo.subTotal1Tax}}</th>
-            <th colspan="2">{{Wellsfargo.subTotal1Total}}</th>
-        </tr>
-
-        <tr>
-            <td colspan="3" class="total">{{Wellsfargo.demoProduct}}</td>
-            <td colspan="1">{{Wellsfargo.demoProductPreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.demoProductTax}}</td>
-            <td colspan="2">{{Wellsfargo.demoProductTotal}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="3" class="total">{{Wellsfargo.demoLabor}}</td>
-            <td colspan="1">{{Wellsfargo.demoLaborPreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.demoLaborTax}}</td>
-            <td colspan="2">{{Wellsfargo.demoLaborTotal}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="3" class="total">{{Wellsfargo.subTotal2}}</td>
-            <th colspan="1">{{Wellsfargo.subTotal2PreTax}}</th>
-            <th colspan="1">{{Wellsfargo.subTotal2Tax}}</th>
-            <th colspan="2">{{Wellsfargo.subTotal2Total}}</th>
-        </tr>
-
-        <tr>
-            <th colspan="12" rowspan="4" style="border: none;"></th>
-            <th colspan="1" rowspan="4" class="rotate">{{Wellsfargo.rotationText}}</th>
-            <td colspan="3" class="total">{{Wellsfargo.freight}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.freightPreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.freightTax}}</td>
-            <td colspan="2">{{Wellsfargo.freightTotal}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="3" class="total">{{Wellsfargo.shipping}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.shippingPreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.shippingTax}}</td>
-            <td colspan="2">{{Wellsfargo.shippingTotal}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="3" class="total">{{Wellsfargo.profit}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.profitPreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.profitTax}}</td>
-            <td colspan="2">{{Wellsfargo.profitTotal}}</td>
-        </tr>
-
-        <tr>
-            <td colspan="3" class="total">{{Wellsfargo.insurance}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.insurancePreTax}}</td>
-            <td colspan="1" class="dollar">{{Wellsfargo.insuranceTax}}</td>
-            <td colspan="2">{{Wellsfargo.insuranceTotal}}</td>
-        </tr>
-
-        <tr>
-            <th colspan="13" style="border: none;"></th>
-            <th colspan="3" class="total">{{Wellsfargo.allTotal}}</th>
-            <th colspan="1">{{Wellsfargo.allTotalTaxPreTax}}</th>
-            <th colspan="1">{{Wellsfargo.allTotalTax}}</th>
-            <th colspan="2">{{Wellsfargo.allMaterialTotal}}</th>
-        </tr>
+        <table class="report" style="width: 700;">
+            <tr>
+                <th colspan="4" style="text-decoration: underline;">Development Phase Services</th>
+                <th colspan="4" style="text-decoration: underline;">Specifications</th>
+                <th colspan="4" style="text-decoration: underline;">Special Conditions</th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of Hardware Platform Design</th>
+                <th colspan="4"><input type="checkbox">Provide full book specification</th>
+                <th colspan="4"><input type="checkbox">Overtime authorization at higher hourly
+                    Rate of 1.5 times Hourly Rate Schedule
+                </th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of Software Framework</th>
+                <th colspan="4"><input type="checkbox">Provide short form book specification</th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of Security Platform</th>
+                <th colspan="4"><input type="checkbox">Provide Marketing Documentation</th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of HMI Appliance</th>
+                <th colspan="4"><input type="checkbox">“RED MARK” specifications for others</th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of Device Driver</th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Software Custom Module Development</th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of Documentation</th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of Web Appliance</th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Development of Automated Processes</th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Others special systems:  Describe</th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Estimate probable cost</th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+            <tr>
+                <th colspan="4"><input type="checkbox">Attend development review meetings </th>
+                <th colspan="4"></th>
+                <th colspan="4"></th>
+            </tr>
+        </table>
 
 
-    </table>
 
 
+
+
+        <p class="specific">
+            <span class="inclusion">Specific Inclusions / Exclusions:</span> Stipulated Sum does not include cost of
+            materials or expenses due to travel
+            these and similar expenses will be considered reimbursable at 1.15 of actual cost and will be billed in
+            addition
+            to the Stipulated Sum quoted on Page 1 of 5 of this document. Client shall pay all applicable sales, use,
+            withholding and excise tax, and any other assessments.
+        </p>
+        <!-- --------------------page-3---------------------- -->
+
+        <p class="general">PART 1 - GENERAL</p>
+
+        <p class="general">1.1. PROPOSAL CONFIDENTIALITY: The information in this proposal shall not be disclosed
+            outside
+            the Client’s organization and shall not be duplicated, used or disclosed in whole or in part for any purpose
+            other than to evaluate the proposal. If a contract is awarded to Lynxspring, Inc. as a result of or in
+            connection with the submission of this proposal, the Client shall have the right to duplicate, use or
+            disclose
+            the information to the extent provided by the contract.</p>
+
+        <p class="general">1.2. CREDITS: The Consultant shall have the right to include representations of the design of
+            the
+            Project, including photographs, among the Consultant’s promotional and professional materials, subject to
+            that
+            which if the Client has previously advised the Consultant in writing of the specific information considered
+            by
+            the Client to be confidential or proprietary. The Client will provide professional credit for the Consultant
+            in
+            promotional materials for the Project.</p>
+
+        <p class="general">1.3. ORDERLY PROGRESS: Fees are based upon an orderly progression of work (by the Consultant)
+            defined in the SOW with concurrent input and approvals (by the Client) from Discovery, through Development,
+            and
+            on to Deployment. Revisions to the Project’s design that are not consistent with previous decisions, or
+            approvals on drawings previously received from Client, or that are made as a result of the Client’s, or
+            other
+            Client’s consultants, failure to make such decisions in a timely manner, are not included in any stipulated,
+            lump-sum fees.</p>
+
+        <p class="general">1.4. QUALIFICATION LIMITATION FOR FIXED FEES: Should the Scope of Work required for
+            completion of
+            the Project be different than that described in the proposal, or should the conditions under which the work
+            is
+            to be performed be changed through no fault of the Consultant, fee amounts may be amended by mutual
+            agreement of
+            both parties. Both parties prior to commencement of work shall sign a written agreement.</p>
+
+        <p class="general">1.5. LIMITATION OF LIABILITY: Unless otherwise indicated in the proposal and only to the
+            fullest
+            extent permitted by law, Client agrees to limit the liability of the Consultant, its officers, shareholders,
+            and
+            employees, for any negligent acts, errors, omissions, or breaches of contract or warranty arising out of the
+            performance of Consultant's services under this agreement, to the amount of Consultant's Compensation
+            regardless
+            of the number of claims or the number of parties prosecuting claims against Consultant.</p>
+
+        <p class="general">1.6. TERMINATION: This Agreement may be terminated by either party upon not less than seven
+            (7)
+            days written notice should the other party fail substantiality to perform in accordance with the terms and
+            Conditions contained herein, through no fault of the party initiating the termination.</p>
+
+        <p class="general">1.7. TERMINATION EXPENSES: In the event of suspension of services through no fault of the
+            Consultant, the Consultant shall be compensated for services performed prior to the termination, together
+            with
+            all Reimbursable Expenses then due. The Client shall also reimburse the Consultant for all of the
+            Consultant’s
+            termination expenses including but not limited to, those associated with demobilization, re-assignment of
+            personnel, and space and equipment costs.</p>
+
+        <p class="general">1.8. SUBMITTALS AND APPROVALS: Unless otherwise indicated, the Consultant will submit
+            Documents
+            to the Client for review, comment and approval. The Consultant will revise and re-submit Documents, or
+            provide
+            modification documents as required by agencies having legal jurisdiction, in order to secure their approval,
+            when such modifications are normal, reasonable, timely and customary.</p>
+
+        <p class="general">PART 2 - ADDITIONAL SERVICES</p>
+
+        <p class="general">2.1. Additional services shall be paid for by the Client based on hourly rates or stipulated
+            sums
+            indicated in the Proposal or Agreement, in addition to the compensation for the accepted Proposed Services &
+            Fees. Unless otherwise indicated within the Proposal, Agreement, or Scope of Services Description, the
+            following
+            services are not included in the Consultant’s Services fee.</p>
+
+        <p class="general">2.1.1. Revisions to documents that are: inconsistent with instructions previously given by
+            the
+            Client, or due to changes required as a result of the Client’s or Client’s Consultant’s failure to render
+            decisions in a timely manner.</p>
+
+        <p class="general">2.1.2. PROTO-TYPE RE-DESIGN due to subsequent changes by the client to the prototypical
+            design
+            criteria after Consultant has commenced with documents or products for a specific deployment</p>
+
+        <p class="general">2.1.3. Billable Agency Review re-submittals: If the Consultant is asked to provide
+            resubmittal
+            because of the following circumstances, it will be considered a billable review submittal subject to
+            additional
+            costs to the client: (1) changes that occurred to the documents or products after initial submittal that the
+            Consultant was not aware of, or (2) information prompting the resubmittal was not part of publicly available
+            documentation, or (3) review agency requires resubmittal of information that was contained in previous
+            submittals, or (4) that are otherwise interpretive in nature. </p>
+
+        <p class="general">PART 3 - PAYMENTS TO THE CONSULTANT</p>
+
+        <p class="general">3.1. INVOICES: Payments for invoices shall be made within 30 days of receipt or lesser time
+            as is
+            appropriate, for completion of services and for reimbursable expenses within that billing period. The Client
+            shall not withhold payment to Consultant subject to claims or potential claims arising out of the
+            construction
+            for the work.</p>
+
+        <p class="general">3.2. NOTIFICATION OF OBJECTIONS: If the Client objects to all or any portion of an invoice,
+            the
+            Client shall so notify the Consultant within seven (7) calendar days of receipt, identifying the cause for
+            disagreement, and pay when due that portion of the invoice, if any, not in dispute. Disputes do not change
+            the
+            date payment is due, nor extend the grace period.</p>
+
+        <p class="general">3.3. CHARGES FOR REIMBURSABLE EXPENSES are in addition to the amounts charged for Fees, and
+            will
+            be billed at a multiple of 1.15 the actual cost charged to the Consultant by outside service agencies, or at
+            the
+            specified rates for in-house expenses indicated.</p>
+
+        <p class="general">3.4. LATE PAYMENT: A service charge of 1.5% per month of the adjusted previous balance or the
+            maximum governmental allowed interest (or a minimum service charge of $20.00 per invoice) may be added to
+            the
+            Client’s account with the Consultant, for any payment received by the Consultant after 30 calendar days from
+            the
+            date of the invoice, excepting any portion of the invoiced amount in dispute and resolved in favor of the
+            Client. The adjusted previous balance is the amount owed the Consultant on the preceding invoice, less
+            payments
+            and credits received. Application of this service charge as a consequence of late payment does not
+            constitute
+            any willingness of the Consultant to finance the Client’s operations, and no such willingness shall be
+            inferred.
+            The Consultant reserves the right to suspend services without notice on any and all of Clients projects
+            under
+            contract, when any amount is over 30 days past due. </p>
+
+        <p class="general">PART 4 - SUPPLEMENTAL CONDITIONS</p>
+
+        <p class="general">4.1. STATE SPECIFIC CHARGES: LYNXSPRING charges “User Tax” for services rendered in the State
+            of
+            Missouri. More Municipalities will be adding their version as time progresses. This will result in
+            additional
+            fee’s to cover cost for them as well and LYNXSPRING will notify you of associated cost as the requirements
+            are
+            discovered. LYNXSPRING reserves the right to charge for all additional cost as new Municipalities
+            requirements
+            are encountered. LYNXSPRING will notify the client immediately upon determination of any extra cost.</p>
+
+        <p class="general">4.2. HOURLY RATE SCHEDULE: As of August 24, 2017</p>
+
+        <table class="category" style="width: 200;">
+            <tr>
+                <th colspan="4">Category</th>
+                <th colspan="4" style="text-decoration: underline;">Rate</th>
+                <th colspan="4"></th>
+            </tr>
+        </table>
+        <table class="admin" style="width: 200;">
+            <tr>
+                <th colspan="4">Administrative</th>
+                <th colspan="4">$125.00</th>
+                <th colspan="4"></th>
+            </tr>
+
+            <tr>
+                <th colspan="4">Technician</th>
+                <th colspan="4">$150.00</th>
+                <th colspan="4"></th>
+            </tr>
+
+            <tr>
+                <th colspan="4">Trainer</th>
+                <th colspan="4">$200.00</th>
+                <th colspan="4"></th>
+            </tr>
+
+            <tr>
+                <th colspan="4">Consultant</th>
+                <th colspan="4">$200.00</th>
+                <th colspan="4"></th>
+            </tr>
+
+            <tr>
+                <th colspan="4">Developer</th>
+                <th colspan="4">$250.00</th>
+                <th colspan="4"></th>
+            </tr>
+
+            <tr>
+                <th colspan="4">Engineer</th>
+                <th colspan="4">$250.00</th>
+                <th colspan="4"></th>
+            </tr>
+
+            <tr>
+                <th colspan="4">Project Management</th>
+                <th colspan="4">$300.00</th>
+                <th colspan="4"></th>
+            </tr>
+
+            <tr>
+                <th colspan="4">Executive </th>
+                <th colspan="4">$500.00</th>
+                <th colspan="4"></th>
+            </tr>
+        </table>
+
+        <p class="general">Note: Travel per diem is based on a ten-hour day (IE: Engineer per diem is $250.00 X 10 =
+            $2,500.00)</p>
+
+        <!-- -------------------------page-4--------------------- -->
+
+
+        <h5 class="statement">STATEMENT OF WORK FOR: <span style="text-decoration: underline;">LTF – MIDDLETOWN, NJ
+            </span>
+        </h5>
+
+
+        <h5 class="statement">MILESTONES AND DELIVERABLES INCLUDE:</h5>
+
+
+        <table class="description" style="width: 610;">
+
+            <tr>
+                <th colspan="3"></th>
+                <th colspan="3">Description of Deliverables</th>
+                <th colspan="3">Estimated Start & End Dates </th>
+                <th colspan="3">Amount </th>
+            </tr>
+
+            <tr>
+                <th colspan="3">Milestone 1</th>
+                <td colspan="3">Mobilization</td>
+                <th colspan="3">Est. Start Date:
+                    Upon receipt of Purchase Order
+                </th>
+                <th colspan="3">Due Upon execution of Proposal
+                    25% Labor
+                    <span style="color: rgb(0, 92, 169);">$XXXXX</span>
+                </th>
+            </tr>
+
+            <tr>
+                <th colspan="3">Milestone 2</th>
+                <td colspan="3">Submittal drawings</td>
+                <th colspan="3">
+                    <ol>
+                        <li><span style="text-decoration: underline;">Start Date:</span> Upon approval of submittals
+                        </li>
+
+                        <li><span style="text-decoration: underline;">End Date:</span> Upon completion of controller
+                            programming. 8-12 Weeks depending on panel
+                            requirements.</li>
+                    </ol>
+                </th>
+                <td colspan="3">100% material + 25% labor
+                    <span style="color: rgb(0, 92, 169);">$XXXXX</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="3">Milestone 3</th>
+                <td colspan="3">
+                    Substantial Completion:
+                    <ol>
+
+                        <li>Material Shipment</li>
+                        <li>Site Commissioning</li>
+                        <li>BAS System running and proving control.</li>
+                    </ol>
+                </td>
+                <th colspan="3">
+                    <ol>
+                        <li><span style="text-decoration: underline;">Start Date:</span>Upon shipment of materials.</li>
+
+                        <li><span style="text-decoration: underline;">End Date:</span> Site Commission reasonably
+                            completed,
+                            and system is in operation
+                        </li>
+                    </ol>
+                </th>
+                <td colspan="3">45% Labor
+                    <span style="color: rgb(0, 92, 169);">$XXXXX</span>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="3">Milestone 4</th>
+                <td colspan="3">Closeout & Final Acceptance</td>
+                <th colspan="3">
+                    <ol>
+                        <li><span style="text-decoration: underline;">Start Date:</span>
+                            Site Commission reasonably completed.
+                        </li>
+
+                        <li><span style="text-decoration: underline;">End Date:</span>
+                            4 weeks after start of Site Commission
+                        </li>
+                    </ol>
+                </th>
+                <td colspan="3">Remaining 5% Labor
+                    <span style="color: rgb(0, 92, 169);">$XXXXX</span>
+                </td>
+            </tr>
+
+        </table>
+
+        <table class="total" style="width: 1200;">
+            <tr>
+                <th colspan="3"></th>
+                <th colspan="3"></th>
+                <th colspan="3">Total</th>
+                <td colspan="3">$36,922</td>
+            </tr>
+        </table>
+
+        <p class="last">Last Updated: 4/15/22</p>
+    </div>
 </body>
-
-</html>
+<html>

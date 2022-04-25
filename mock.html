@@ -10,15 +10,15 @@
             text-align: center;
             font-family: verdana;
         }
-        
+
         .textarea {
             margin-left: 30%;
         }
-        
+
         #form1 {
             margin-left: 48%;
         }
-        
+
         .button {
             width: 100px;
             background-color: blue;
@@ -29,7 +29,7 @@
             font-family: verdana;
             font-size: large;
         }
-        
+
         .button1 {
             width: 120px;
             background-color: #808080;
@@ -40,17 +40,17 @@
             font-family: verdana;
             font-size: large;
         }
-        
+
         #form2 {
             margin-left: 30%;
         }
-        
+
         .input {
             width: 27%;
             border: 1px solid black;
             padding: 10px;
         }
-        
+
         .label {
             font-family: verdana;
             font-weight: bold;
@@ -64,7 +64,7 @@
 
 
     <div class="row">
-        <h1 id="info1" class="head">Wellsfargo PDF & Excel Reports Download </h1>
+        <h1 id="info1" class="head">Non-Wellsfargo Document & Excel Reports Download </h1>
     </div>
     <form id="form2">
         <label class="label">URL:</label>
@@ -83,17 +83,17 @@
         <button name="submit" id="excel" value="Excel" class="button">EXCEL</button>
     </form>
     <script>
-        $('#clear').click(function(event) {
+        $('#clear').click(function (event) {
             event.preventDefault();
             $('#url').val("");
         });
 
-        $('#clearAll').click(function(event) {
+        $('#clearAll').click(function (event) {
             event.preventDefault();
             $('#jsonData').val("");
         });
 
-        $('#docx').click(function(event) {
+        $('#docx').click(function (event) {
             console.log("Testing-Docx");
             var excelData = getJsonData();
             event.preventDefault();
@@ -102,16 +102,17 @@
                     responseType: 'blob'
                 },
                 type: 'POST',
+                // url: 'https://wfdocxservice.azurewebsites.net/api/docx',
                 url: 'http://localhost/api/docx',
                 data: excelData,
-                success: function(result) {
+                success: function (result) {
                     console.log("Testing-Docx!!!!!!");
                     let blob = new Blob([result], {
                         type: "application/octetstream"
                     });
                     let a = document.createElement('a');
                     a.href = window.URL.createObjectURL(blob);
-                    a.download = "wellsfargo.docx";
+                    a.download = "Non-wellsFargo.docx";
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
@@ -121,7 +122,7 @@
         });
 
 
-        $('#pdf').click(function(event) {
+        $('#pdf').click(function (event) {
             console.log("Testing-PDF");
             var excelData = getJsonData();
             event.preventDefault();
@@ -130,9 +131,11 @@
                     responseType: 'blob'
                 },
                 type: 'POST',
+                // url: 'https://wfdocxservice.azurewebsites.net/api/pdf',
                 url: 'http://localhost/api/pdf',
                 data: excelData,
-                success: function(result) {
+                success: function (result) {
+                    console.log("Testing-Pdf!!!!!!", result);
                     let blob = new Blob([result], {
                         type: "application/octetstream"
                     });
@@ -147,7 +150,7 @@
             });
         });
 
-        $('#excel').click(function(event) {
+        $('#excel').click(function (event) {
             console.log("Testing-EXCEL");
             var excelData = getJsonData();
             event.preventDefault();
@@ -156,9 +159,10 @@
                     responseType: 'blob'
                 },
                 type: 'POST',
+                // url: 'https://wfdocxservice.azurewebsites.net/api/excel',
                 url: 'http://localhost/api/excel',
                 data: excelData,
-                success: function(result) {
+                success: function (result) {
                     let blob = new Blob([result], {
                         type: "application/octetstream"
                     });
@@ -175,212 +179,86 @@
 
         function getJsonData() {
             var jsonObj = {
-                "mainTitle": "Wells Fargo Quote Form for HVAC Projects",
-                "tableOneTitle": "PROJECT/ WO INFORMATION (Information provided by Wells Fargo)",
-                "tableTwoTitle": "VENDOR'S AUTHORIZED REPRESENTATIVE",
-                "dateSubmitted": "XXXXX",
-                "projectOrWorkOrder": "WF-12",
-                "wfProjectOrPropertyManager": "hklhl",
-                "beNumber": "asfasfasga",
-                "buildingOrProjectName": "asfasfasga",
-                "beServiceOrDeliveryAddress": "asfasfasga",
-                "projectArea": "asfasfasga",
-                "estimatedStartDate": "2022-03-22T18:30:00.000Z",
-                "estimatedCompleteDate": "2022-03-22T18:30:00.000Z",
-                "companyName": "Lynxspring Inc",
-                "remitToAddress": "2900 NE Independence Ave",
-                "cityStateZip": "Lee's Summit, MO 64086",
-                "contactName": "asfasfasga",
-                "phone": "816 347 3500",
-                "cell": "913 219 5513",
-                "email": "asfasfasga",
-                "wfVendOrNumber": "asfasfasga",
-                "proposalNumber": "asfasfasga",
-                "wfContractNumber": "asfasfasga",
-                "changeOrder": "asfasfasga",
-                "changeOrderPreviousPO": "asfasfasga",
-                "scopeTitle": "SCOPE OF WORK",
-                "scopeSubHeadOne": "Detail Needed- Be as descriptive as possible and if there are multiples of items please specify how many.  Details and numbers of units help fixed assets determine asset value and will help eliminate questions and the need to resubmit proposals or invoices. ",
-                "scopeSubDescription": "Provide JENEsys Hardware as submitted by Wells Fargo on JENE order forms.  Pre-Mount equipment in v 2.54 Admin Panels and ship to site for Site Electrical/BMS Contractor to Install. Site Contractor responsible to provide on site integration, graphics, schedules, alarms and configuration.  Station to be returned to Lynxspring for review.  BExxx Site to have xxxxxxxxxxx.",
-                "scopeSubDescription_D1": "Provide JENEsys Hardware as submitted by Wells Fargo on JENE order forms.  Pre-Mount equipment in v 2.54 Admin Panels and ship to site for Site Electrical/BMS Contractor to Install. Site Contractor responsible to provide on site integration, graphics, schedules, alarms and configuration.  Station to be returned to Lynxspring for review.",
-                "scopeSubDescription_D2": "BExxx Site to have xxxxxxxxxxx.",
-                "installHeading": "INSTALLATION",
-                "detailSubHeadOne": "DETAILED DESCRIPTION",
-                "productSubHeadTwo": "PRODUCT / MATERIAL / EQUIPMENT",
-                "laborSubHeadThree": "LABOR / SERVICE",
-                "installHeadingColumn1": "WF needs to see the Labor Costs associated with the Product.  If Quote is for labor only, leave Product Section blank.  Include separate lines for HVAC components as well  as separate lines for equipent and materials related to that component.Include separate lines for controls components (i.e. controller devices such as JENEsys, thermostats, miscellaneous materials). Include labor associated with specific equipment on the same line.",
-                "installHeadingColumn1_D1": "WF needs to see the Labor Costs associated with the Product.  If Quote is for labor only, leave Product Section blank.",
-                "installHeadingColumn1_D2": "Include separate lines for HVAC components as well  as separate lines for equipent and materials related to that component.\n\n",
-                "installHeadingColumn1_D3": "Include separate lines for controls components (i.e. controller devices such as JENEsys, thermostats, miscellaneous materials). Include labor associated with specific equipment on the same line.",
-                "installHeadingColumn2": "Manufacturer",
-                "installHeadingColumn3": "Model #",
-                "installHeadingColumn4": "Serial # (if available)",
-                "installHeadingColumn5": "Qty.",
-                "installHeadingColumn6": "Each Price ",
-                "installHeadingColumn7": "Each Mark-Up",
-                "installHeadingColumn8": "TOTAL PRODUCT",
-                "installHeadingColumn9": "Taxable? (Y/N)",
-                "installHeadingColumn10": "# People",
-                "installHeadingColumn11": "# Hours per Person",
-                "installHeadingColumn12": "Hourly Bill Rate",
-                "installHeadingColumn13": "Union Rate(Y/N)",
-                "installHeadingColumn14": "TOTAL LABOR",
-                "installHeadingColumn15": "Labor Taxable? (Y/N)",
-                "installHeadingColumn16": "TOTAL PRODUCT & LABOR",
+                "quoteTo": "MACC",
+                "name": "Craig Turlington",
+                "project": "WF New Jersey",
+                "date": "13-04-2022",
+                "expires": "XXXXX",
+                "paymentTerms": "XXXXX",
+                "preparedBy": "XXXXX",
+                "multiplier": "1.000",
+                "total": "$ 0.386",
+
                 "installColumns": [{
-                    "coloumn1": "Detailed Description",
-                    "coloumn2": "LynxSpring",
-                    "coloumn3": "Mode1",
-                    "coloumn4": "Ser1",
-                    "coloumn5": 1,
-                    "coloumn6": 12,
-                    "coloumn7": "$  - 1212",
-                    "coloumn8": "$  - 1212",
-                    "coloumn9": "Y",
-                    "coloumn10": 1,
-                    "coloumn11": 1,
-                    "coloumn12": 1,
-                    "coloumn13": "Y",
-                    "coloumn14": "$  - 1212",
-                    "coloumn15": "Y",
-                    "coloumn16": "$  - 10"
-                }, {
-                    "coloumn1": "Detailed Description",
-                    "coloumn2": "LynxSpring",
-                    "coloumn3": "asfasfasga",
-                    "coloumn4": "asfasfasga",
-                    "coloumn5": "asfasfasga",
-                    "coloumn6": "asfasfasga",
-                    "coloumn7": "$  - asfasfasga",
-                    "coloumn8": "$  - asfasfasga",
-                    "coloumn9": "Y",
-                    "coloumn10": "asfasfasga",
-                    "coloumn11": "asfasfasga",
-                    "coloumn12": "asfasfasga",
-                    "coloumn13": "N",
-                    "coloumn14": "$  - asfasfasga",
-                    "coloumn15": "N",
-                    "coloumn16": "$  - asfasfasga"
-                }, {
-                    "coloumn1": "Detailed Description",
-                    "coloumn2": "LynxSpring",
-                    "coloumn3": "asfasfasga",
-                    "coloumn4": "asfasfasga",
-                    "coloumn5": "asfasfasga",
-                    "coloumn6": "asfasfasga",
-                    "coloumn7": "$  - asfasfasga",
-                    "coloumn8": "$  - asfasfasga",
-                    "coloumn9": "Y",
-                    "coloumn10": "asfasfasga",
-                    "coloumn11": "asfasfasga",
-                    "coloumn12": "asfasfasga",
-                    "coloumn13": "N",
-                    "coloumn14": "$  - asfasfasga",
-                    "coloumn15": "N",
-                    "coloumn16": "$  - asfasfasga"
-                }],
-                "totalProduct": "$ - null",
-                "totalPeople": null,
-                "totalHoursPerPerson": null,
-                "totalHourlyBillRate": "xxxxx",
-                "totalUnionRate": "xxxxx",
-                "totalLabor": "$ -",
-                "totalLaborTaxable": "xxxxx",
-                "totalProductAndLabor": "$ - null",
-                "demoHeading": "DEMO / REMOVAL / PATCHING / REPAIRS / RELO ",
-                "demoSubHeadOne": "DEMO - PRODUCT/ MATERIALS",
-                "demoSubHeadTwo": "DEMO - LABOR",
-                "demoHeadingColumn1": "Include costs of demolition and demolition labor.",
-                "demoHeadingColumn2": "",
-                "demoHeadingColumn3": "",
-                "demoHeadingColumn4": "Qty.",
-                "demoHeadingColumn5": "Price Each",
-                "demoHeadingColumn6": "TOTAL DEMO",
-                "demoHeadingColumn7": "Taxable? (Y/N)",
-                "demoHeadingColumn8": "# People",
-                "demoHeadingColumn9": "# Hours per Person",
-                "demoHeadingColumn10": "Hourly Bill Rate",
-                "demoHeadingColumn11": "Union Rate(Y/N)",
-                "demoHeadingColumn12": "TOTAL LABOR",
-                "demoHeadingColumn13": "Labor Taxable? (Y/N)",
-                "demoHeadingColumn14": "TOTAL DEMO PRODUCT & LABOR",
-                "demoColumns": [{
-                    "coloumn1": "Demolition - Removal",
-                    "coloumn2": "",
-                    "coloumn3": "",
-                    "coloumn4": "",
-                    "coloumn5": "$    -",
-                    "coloumn6": "$    -",
-                    "coloumn7": "",
-                    "coloumn8": "",
-                    "coloumn9": "",
-                    "coloumn10": "$    -",
-                    "coloumn11": "",
-                    "coloumn12": "$    -",
-                    "coloumn13": "",
-                    "coloumn14": "$    -"
-                }],
-                "totalDemo": "$ -",
-                "totalDemoPeople": "0",
-                "totalDemoHoursPerPerson": "0",
-                "totalDemoHourlyBillRate": "xxxxx",
-                "totalDemoUnionRate": "xxxxx",
-                "totalDemoLabor": "$ -",
-                "totalDemoLaborTaxable": "xxxxx",
-                "totalDemoProductAndLabor": "$ -",
-                "clarificationsHeading": "Assumptions and Clarifications ",
-                "clarificationDescription": " Assumes local contractor will integrate all existing devices and complete all necessary graphics.",
-                "taxHeading": "Manually Insert Tax $ as required",
-                "taxHeadingColoumn1": "ENTER TAX RATE ",
-                "taxHeadingColoumn2": "PRE-TAX",
-                "taxHeadingColoumn3": "TAX",
-                "totalTaxHeading": "TOTAL",
-                "taxRate": "0.00% ",
-                "product": "PRODUCT  ",
-                "productPreTax": "$   - 34734",
-                "productTax": "$   - 734",
-                "productTotal": "$   - 734734",
-                "labor": "LABOR  ",
-                "laborPreTax": "$   - 34734",
-                "laborTax": "$   - 34734",
-                "laborTotal": "$   - 34734",
-                "subTotal1": "SUBTOTAL  ",
-                "subTotal1PreTax": "$   - 34734",
-                "subTotal1Tax": "$   - 34734",
-                "subTotal1Total": "$   -34734",
-                "demoProduct": "DEMO PRODUCT  ",
-                "demoProductPreTax": "$   - 34734",
-                "demoProductTax": "$   - 34734",
-                "demoProductTotal": "$   - 34734",
-                "demoLabor": "DEMO LABOR  ",
-                "demoLaborPreTax": "$   - 34734",
-                "demoLaborTax": "$   - 34734",
-                "demoLaborTotal": "$   - 34734",
-                "subTotal2": "SUBTOTAL  ",
-                "subTotal2PreTax": "$   - 34734",
-                "subTotal2Tax": "$   - 34734",
-                "subTotal2Total": "$   - 34734",
-                "freight": "FREIGHT  ",
-                "freightPreTax": "$   - 34734",
-                "freightTax": "$   - 34734",
-                "freightTotal": "$   - 34734",
-                "shipping": "SHIPPING & HANDLING  ",
-                "shippingPreTax": "$   - 34734",
-                "shippingTax": "$   - 34734",
-                "shippingTotal": "$   - 34734",
-                "profit": "PROFIT & OH  ",
-                "profitPreTax": "$   - 34734",
-                "profitTax": "$   - 34734",
-                "profitTotal": "$   -34734",
-                "insurance": "INSURANCE  ",
-                "insurancePreTax": "$   - 34734",
-                "insuranceTax": "$   - 34734",
-                "insuranceTotal": "$   - 34734",
-                "allTotal": "TOTAL  ",
-                "allTotalTaxPreTax": "$   - 34734",
-                "allTotalTax": "$   - 34734",
-                "allMaterialTotal": "$   - 34734",
-                "rotationText": "if \r\n applicable"
+                    "coloumn1": "1",
+                    "coloumn2": "1",
+                    "coloumn3": "Lynxspring",
+                    "coloumn4": "JENE-EG414-VAV",
+                    "coloumn5": "JENEsys EDGE 414 Programmable VAV",
+                    "coloumn6": "$ 328.75",
+                    "coloumn7": "$ 328.75",
+                    "coloumn8": "$ 328.75"
+
+                },
+                {
+                    "coloumn1": "2",
+                    "coloumn2": "1",
+                    "coloumn3": "Lynxspring",
+                    "coloumn4": "xxxxx",
+                    "coloumn5": "xxxxx",
+                    "coloumn6": "$  0.00",
+                    "coloumn7": "$  0.00",
+                    "coloumn8": "$  0.00"
+
+                },
+                {
+                    "coloumn1": "3",
+                    "coloumn2": "1",
+                    "coloumn3": "Lynxspring",
+                    "coloumn4": "xxxxx",
+                    "coloumn5": "xxxxx",
+                    "coloumn6": "$  0.00",
+                    "coloumn7": "$  0.00",
+                    "coloumn8": "$  0.00"
+
+                },
+                {
+                    "coloumn1": "4",
+                    "coloumn2": "1",
+                    "coloumn3": "Lynxspring",
+                    "coloumn4": "xxxxx",
+                    "coloumn5": "xxxxx",
+                    "coloumn6": "$  0.00",
+                    "coloumn7": "$  0.00",
+                    "coloumn8": "$  0.00"
+                }
+                ],
+
+
+                "date": "13-04-2022",
+                "projectName": "XXXXXXX",
+                "clientName": "Craig Turlington",
+                "address": "XXXXXX",
+                "address2": "XXXXXX",
+                "cityState": "XXXXXX",
+                "email": "lynxspring@gmail.com",
+                "services": "XXXXXX",
+                "hourlySum": "XXXXXX",
+                "projectDescription": "XXXXXX",
+                "projectName": "XXXXXXX",
+                "proposedBy": "XXXXXX",
+                "proposedName": "XXXXXX",
+                "proposedTitle": "XXXXXX",
+                "proposedDate": "XXXXXX",
+                "acceptedBy": "XXXXXX",
+                "acceptedName": "XXXXXX",
+                "acceptedTitle": "XXXXXX",
+                "acceptedDateSigned": "XXXXXX",
+                "amount1": "$XXXXXX",
+                "amount2": "$XXXXXX",
+                "amount3": "$XXXXXX",
+                "amount4": "$XXXXXX",
+                "totallast": "$ 36,922",
             }
             return jsonObj;
 
