@@ -102,8 +102,8 @@
                     responseType: 'blob'
                 },
                 type: 'POST',
-                // url: 'https://wfdocxservice.azurewebsites.net/api/docx',
-                url: 'http://localhost/api/docx',
+                url: 'https://nonwellsfargo.azurewebsites.net/api/docx',
+                // url: 'http://localhost/api/docx',
                 data: excelData,
                 success: function (result) {
                     console.log("Testing-Docx!!!!!!");
@@ -131,8 +131,8 @@
                     responseType: 'blob'
                 },
                 type: 'POST',
-                // url: 'https://wfdocxservice.azurewebsites.net/api/pdf',
-                url: 'http://localhost/api/pdf',
+                url: 'https://nonwellsfargo.azurewebsites.net/api/pdf',
+                // url: 'http://localhost/api/pdf',
                 data: excelData,
                 success: function (result) {
                     console.log("Testing-Pdf!!!!!!", result);
@@ -159,8 +159,8 @@
                     responseType: 'blob'
                 },
                 type: 'POST',
-                // url: 'https://wfdocxservice.azurewebsites.net/api/excel',
-                url: 'http://localhost/api/excel',
+                url: 'https://nonwellsfargo.azurewebsites.net/api/excel',
+                // url: 'http://localhost/api/excel',
                 data: excelData,
                 success: function (result) {
                     let blob = new Blob([result], {
